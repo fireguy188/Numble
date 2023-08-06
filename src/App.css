@@ -1,0 +1,35 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    font-size: 40px;
+  }
+
+  100% {
+    opacity: 0.8;
+    font-size: 50px;
+  }
+}
+
+#header {
+  position: absolute;
+  font-size: 80px;
+  top: 0px;
+  width: 100vw;
+  text-align: center;
+  color: gray;
+}
+
+.dramatic {
+  position: fixed;
+  top: 40vh;
+  font-size: 50px;
+  opacity: 0.8;
+  text-align: center;
+  border: 5px solid gray;
+  background-color: black;
+  color: gray;
+  border-radius: 20px;
+  z-index: 0;
+  padding: 20px;
+  animation: fadeIn 5s;
+}
