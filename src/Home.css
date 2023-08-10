@@ -1,16 +1,16 @@
 @keyframes bounceIn {
   0% {
-    font-size: 40px;
+    font-size: 2em;
     opacity: 0;
   }
 
   50% {
-    font-size: 100px;
+    font-size: 5.5em;
     opacity: 1;
   }
 
   100% {
-    font-size: 80px;
+    font-size: 5em;
   }
 }
 
@@ -26,11 +26,19 @@
   }
 }
 
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
 #header {
-  position: absolute;
-  font-size: 80px;
+  position: fixed;
+  bottom: 40vh;
+  font-size: 5em;
   text-shadow: 0px 0px 200px #fff;
-  top: 0px;
   width: 100vw;
   text-align: center;
   color: gray;
@@ -47,8 +55,10 @@
   background-color: black;
   color: gray;
   border-radius: 20px;
-  z-index: 0;
   padding: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 0.8;
   animation: fadeIn 5s;
   animation-delay: 2s;
   animation-fill-mode: forwards;
@@ -58,11 +68,11 @@
   0% {
     opacity: 0;
     width: 100px;
+    display:block;
   }
 
   100% {
     opacity: 1;
-    width: 200px;
   }
 }
 
@@ -78,7 +88,9 @@
 
 .aryehBtn {
   cursor: pointer;
-  z-index: 0;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0.6em 1.2em;
 
   background: linear-gradient(to right, rgb(119, 119, 119) 50%, black 50%);
   background-size: 200% 100%;
@@ -87,8 +99,8 @@
   border: 2px solid gray;
   color: white;
   width: 200px;
-  height: 85px;
-  font-size: 20px;
+  height: 50px;
+  font-size: 2em;
 
   transition: all .5s ease-out;
 }
@@ -96,5 +108,5 @@
 .aryehBtn:hover {
   background-position: left bottom;
   border-radius: 15px;
-  font-size: 30px;
+  color: white;
 }
