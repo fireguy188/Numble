@@ -1,0 +1,30 @@
+.bucket {
+    width: 35vw;
+    height: 72vh;
+    text-align: center;
+	shape-outside: polygon(
+        0 0,
+        100% 0,
+        90% 100%,
+        10% 100%
+    );
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        90% 100%,
+        10% 100%
+    );
+    background-color: #555;
+}
+
+#bucket_window_container {
+    display: inline-block;
+}
+
+.bucket_window {
+	text-align: center;
+    font-size: 3em;
+    height: 4.85vw;
+    width: 4.85vw;
+    margin: 5%;
+}

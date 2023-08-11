@@ -1,4 +1,4 @@
-import "../Home.css";
+import "../styles/Home.css";
 import Header from "../assets/Header";
 import ParticleBackground from "../ParticleBackground";
 import Button from "../assets/Button";
@@ -21,7 +21,7 @@ const Home = () => {
           <p>Are you ready to play?</p>
         </div>
 
-        <Button id="startBtn" text="Play" link="/play"></Button>
+        <Button id="startBtn" text="Play" link="/game"></Button>
       </div>
     </body>
   );
