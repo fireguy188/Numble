@@ -1,6 +1,39 @@
+@keyframes slideIn {
+    0% {
+        right: -35vw;
+    }
+
+    100% {
+        right: 35vw;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fall {
+    0% {
+        opacity: 1;
+        top: 0;
+    }
+
+    100% {
+        top: 100vh;
+    }
+}
+
 .bucket {
+    position:fixed;
+    bottom: 0;
     width: 35vw;
-    height: 72vh;
+    height: 37vw;
     text-align: center;
 	shape-outside: polygon(
         0 0,
@@ -15,6 +48,8 @@
         10% 100%
     );
     background-color: #555;
+    animation: slideIn 2s;
+    animation-fill-mode: forwards;
 }
 
 #bucket_window_container {
@@ -22,6 +57,8 @@
 }
 
 .bucket_window {
+    cursor: pointer;
+    caret-color: transparent;
 	text-align: center;
     font-size: 3em;
     height: 4.85vw;
