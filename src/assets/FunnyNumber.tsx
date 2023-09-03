@@ -8,7 +8,6 @@ interface Props {
 const FunnyNumber = ({ num, color, r, delay }: Props) => {
   return (
     <div
-      className="number"
       style={{
         position: "fixed",
         opacity: 0,
@@ -18,6 +17,7 @@ const FunnyNumber = ({ num, color, r, delay }: Props) => {
         animation: "rotate 2s linear infinite, fall 10s linear",
         animationDelay: delay + "s",
         animationFillMode: "forwards",
+        fontWeight: "bold",
       }}
     >
       {num}

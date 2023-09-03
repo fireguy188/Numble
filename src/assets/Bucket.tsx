@@ -6,6 +6,7 @@ const Bucket = () => {
   for (var i = 1; i < 100; i++) {
     numbers.push(
       <FunnyNumber
+        key={i}
         num={i}
         color={
           "#" +
@@ -14,7 +15,7 @@ const Bucket = () => {
             .padStart(6, "0")
             .toUpperCase()
         }
-        r={36 + Math.floor(Math.random() * 31)}
+        r={39 + Math.floor(Math.random() * 25)}
         delay={Math.random() * 5}
       ></FunnyNumber>
     );

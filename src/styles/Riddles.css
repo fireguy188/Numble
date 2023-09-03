@@ -1,0 +1,17 @@
+#riddles {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 1vw;
+    width: 20vw;
+    border: 0.2vw solid darkgray;
+}
+
+#riddle-title {
+    text-align: center;
+    color: gray;
+}
+
+.riddle {
+    color: gray;
+}
