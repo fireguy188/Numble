@@ -5,7 +5,7 @@ import Button from "../assets/Button";
 
 const Home = () => {
   return (
-    <body>
+    <>
       <ParticleBackground></ParticleBackground>
       <Header></Header>
       <div
@@ -23,7 +23,7 @@ const Home = () => {
 
         <Button id="startBtn" text="Play" link="/game"></Button>
       </div>
-    </body>
+    </>
   );
 };
 
