@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, render_template
 import random
+import re
 
 def is_prime(n):
     if n == 1:
@@ -9,6 +10,16 @@ def is_prime(n):
         if n % x == 0:
             return False
     return True
+
+def nthprime(n):
+    c = 0
+    x = 2
+    while True:
+        if is_prime(x):
+            c += 1
+            if c == n:
+                return x
+        x += 1
 
 riddles = []
 bucket = []
@@ -86,7 +97,45 @@ def gen_bucket_and_riddles():
             else:
                 riddles[i] = f'The {riddle["prime"]}th prime'
 
-gen_bucket_and_riddles()
+def solve(bucket, riddles):
+    answer = [-1 for x in range(len(bucket))]
+
+    # First solve the primes
+    for r in range(len(riddles)):
+        if 'prime' in riddles[r]:
+            answer[r] = nthprime(int(re.search('\d+', riddles[r]).group(0)))
+    
+    while -1 in answer:
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        prev_answer = answer.copy()
+        for r in range(len(riddles)):
+            # Get the letters of boxes involved
+            boxes = re.findall("[A-Z]", riddles[r][1:])
+            if len(boxes) == 1 and answer[alphabet.index(boxes[0])] != -1:
+                box = alphabet.index(boxes[0])
+                if 'square' in riddles[r]:
+                    answer[r] = answer[box]**2
+                elif 'root' in riddles[r]:
+                    answer[r] = int(answer[box]**0.5)
+            elif len(boxes) == 2 and answer[alphabet.index(boxes[0])] != -1 and answer[alphabet.index(boxes[1])] != -1:
+                box1 = alphabet.index(boxes[0])
+                box2 = alphabet.index(boxes[1])
+                if 'sum' in riddles[r]:
+                    answer[r] = answer[box1] + answer[box2]
+                elif 'dif' in riddles[r]:
+                    answer[r] = abs(answer[box1] - answer[box2])
+                elif 'prod' in riddles[r]:
+                    answer[r] = answer[box1] * answer[box2]
+        
+        if answer == prev_answer:
+            return False
+    return True
+
+
+while True:
+    gen_bucket_and_riddles()
+    if solve(bucket, riddles):
+        break
 
 app = Flask(__name__, static_folder="dist/assets", template_folder="dist")
 
@@ -97,10 +146,6 @@ def get_bucket():
 @app.route('/api/get_riddles')
 def get_riddles():
     return jsonify(riddles)
-
-# @app.route('/')
-# def home():
-#     return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
