@@ -23,9 +23,10 @@ def nthprime(n):
 
 riddles = []
 bucket = []
+revealed = []
 
 def gen_bucket_and_riddles():
-    global riddles, bucket
+    global riddles, bucket, revealed
 
     nums = [x for x in range(1, 100)]
     primes = [x for x in nums if is_prime(x)]
@@ -96,9 +97,11 @@ def gen_bucket_and_riddles():
                 riddles[i] = f'The {riddle["prime"]}rd prime'
             else:
                 riddles[i] = f'The {riddle["prime"]}th prime'
+    
+    revealed = random.sample(range(len(bucket)), 2)
 
-def solve(bucket, riddles):
-    answer = [-1 for x in range(len(bucket))]
+def solve(riddles):
+    answer = [-1 if not x in revealed else bucket[x] for x in range(len(bucket))]
 
     # First solve the primes
     for r in range(len(riddles)):
@@ -134,7 +137,7 @@ def solve(bucket, riddles):
 
 while True:
     gen_bucket_and_riddles()
-    if solve(bucket, riddles):
+    if solve(riddles):
         break
 
 app = Flask(__name__, static_folder="dist/assets", template_folder="dist")
@@ -146,6 +149,10 @@ def get_bucket():
 @app.route('/api/get_riddles')
 def get_riddles():
     return jsonify(riddles)
+
+@app.route('/api/get_revealed')
+def get_revealed():
+    return jsonify([-1 if not x in revealed else bucket[x] for x in range(len(bucket))])
 
 if __name__ == "__main__":
     app.run(debug=True)

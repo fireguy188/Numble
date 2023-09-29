@@ -11,14 +11,6 @@ const Riddles = () => {
     fetch("/api/get_riddles").then((res) =>
       res.json().then((data) => {
         // Setting a data from api
-        // var html_riddles: <li>[] = [];
-        // for (var i = 0; i < data.length; i++) {
-        //   html_riddles.push(
-        //     <li className="riddle" key={i}>
-        //       {data[i]}
-        //     </li>
-        //   );
-        // }
         setRiddles(data);
       })
     );
