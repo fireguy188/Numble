@@ -41,35 +41,35 @@ const Bucket = () => {
       <div className="bucket">
         <div id="bucket_window_container">
           {revealed.map(function (window, i) {
-            console.log(window);
-            if (i == -1) {
+            let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            if (window == -1) {
               return (
-                <input className="bucket_window" type="text" key={i}></input>
+                <div className="test">
+                  <label htmlFor={i.toString()}>{alphabet.charAt(i)}</label>
+                  <input
+                    className="bucket_window"
+                    type="text"
+                    key={i}
+                    id={i.toString()}
+                  ></input>
+                </div>
               );
             } else {
               return (
-                <input
-                  className="bucket_window"
-                  type="text"
-                  key={i}
-                  value={window}
-                  disabled
-                ></input>
+                <div className="test">
+                  <label htmlFor={i.toString()}>{alphabet.charAt(i)}</label>
+                  <input
+                    className="bucket_window"
+                    type="text"
+                    key={i}
+                    id={i.toString()}
+                    value={window}
+                    disabled
+                  ></input>
+                </div>
               );
             }
           })}
-          {/* <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input>
-          <input className="bucket_window" type="text"></input> */}
         </div>
       </div>
     </>

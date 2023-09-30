@@ -32,7 +32,7 @@
 .bucket {
     position:fixed;
     bottom: 0;
-    width: 35vw;
+    width: 36vw;
     height: 37vw;
     text-align: center;
 	shape-outside: polygon(
@@ -52,8 +52,17 @@
     animation-fill-mode: forwards;
 }
 
-#bucket_window_container {
+.test {
     display: inline-block;
+    text-align: center;
+    height: 5vw;
+    width: 4.85vw;
+    margin: 5% 7% 5% 7%;
+}
+
+label {
+    color: black;
+    font-weight: bold;
 }
 
 .bucket_window {
@@ -63,5 +72,4 @@
     font-size: 3em;
     height: 4.85vw;
     width: 4.85vw;
-    margin: 5%;
 }
